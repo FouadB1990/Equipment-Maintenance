@@ -1,0 +1,9 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_maintenance_dashboard,access_maintenance_dashboard,model_maintenance_dashboard,base.group_user,1,1,1,1
+access_maintenance_team,access_maintenance_team,model_maintenance_team,base.group_user,1,1,1,1
+access_maintenance_checklist,access_maintenance_checklist,model_maintenance_checklist,base.group_user,1,1,1,1
+access_maintenance_categories,access_maintenance_categories,model_maintenance_categories,base.group_user,1,1,1,1
+access_maintenance_schedule,access_maintenance_schedule,model_maintenance_schedule,base.group_user,1,1,1,1
+access_equipment_spare_parts,access_equipment_spare_parts,model_equipment_spare_parts,base.group_user,1,1,1,1
+access_maintenance_request_order,access_maintenance_request_order,model_maintenance_request_order,base.group_user,1,1,1,1
+access_maintenance_request_order_line,access_maintenance_request_order_line,model_maintenance_request_order_line,base.group_user,1,1,1,1

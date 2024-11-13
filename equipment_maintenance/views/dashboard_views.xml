@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ 
+    <record id="dashboard_equipment_maintenance_kanban" model="ir.ui.view">
+        <field name="name">dashboard.equipment.maintenance.kanban</field>
+        <field name="model">maintenance.team</field>
+        <field name="arch" type="xml">
+            <field name="name"/>
+            <field name="color"/>
+           
+            <kanban create="0">
+               
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="#{!selection_mode ? kanban_color(record.color.raw_value) : ''}">
+                            <div t-attf-class="o_kanban_card_header">
+                                <div class="o_kanban_card_header_title">
+                                    <div class="o_primary">
+                                       <span>Test</span>
+                                        </div> 
+                                </div>
+                                <div class="o_kanban_manage_button_section">
+                                    <a class="o_kanban_manage_toggle_button" href="#"><i class="fa fa-ellipsis-v" role="img" aria-label="Manage" title="Manage"/></a>
+                                </div>
+                            </div>
+                            <div class="container o_kanban_card_content">
+                                <div class="row">
+                                    <div class="col-6 o_kanban_primary_left">
+                                       <span>Test</span>
+
+                                    </div>
+                                    <div class="col-6 o_kanban_primary_right">
+                                        <div t-if="record.todo_request_count_date.raw_value > 0">
+                                            <a >
+                                    
+                                                Scheduled
+                                            </a>
+                                        </div>
+                                        
+            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+
+    <!-- Action -->
+    <record id="action_equipment_maintenance_dashboard" model="ir.actions.act_window">
+        <field name="name">Dashboard</field>
+        <field name="res_model">maintenance.team</field>
+        <field name="view_mode">kanban,form</field>
+        <field name="view_id" ref="dashboard_equipment_maintenance_kanban"/>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Add a new stage in the maintenance request
+          </p>
+        </field>
+    </record>
+
+
+</odoo>

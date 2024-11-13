@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="root_menu_equipment_maintenance"
+        name="Equipment Maintenance"
+        web_icon="equipment_maintenance,static/description/icon.png" />
+
+
+    <!-- Dashboard Menu -->
+     <!-- <menuitem id="dashboard_menu_equipment_maintenance" 
+        name="Dashboard"
+        parent="root_menu_equipment_maintenance"
+        action="action_equipment_maintenance_dashboard" 
+        sequence="10"/> -->
+        
+     
+     <menuitem id="equipment_menu_equipment_schedule" 
+        name="Schedule"
+        parent="root_menu_equipment_maintenance" 
+        action="action_maintenance_schedule"
+        sequence="4"/>
+
+     <menuitem id="equipment_menu_maintenance_request" 
+        name="Maintenance"
+        parent="root_menu_equipment_maintenance" 
+        sequence="5"/>
+
+        <menuitem id="equipment_menu_equipment_maintenance_order" 
+        name="Maintenance Order"
+        parent="equipment_maintenance.equipment_menu_maintenance_request" 
+        action="maintenance_request_action"
+        sequence="2"/>
+
+
+
+
+
+     <menuitem id="equipment_menu_equipment_maintenance" 
+        name="Equipment"
+        parent="equipment_maintenance.root_menu_equipment_maintenance" 
+        sequence="6"/>
+
+     <menuitem id="equipment_menu_equipment_machines" 
+        name="Machines"
+        parent="equipment_maintenance.equipment_menu_equipment_maintenance" 
+        action="action_equipment_maintenance_equipment"
+        sequence="1"/>
+
+     <menuitem id="equipment_menu_equipment_spare_parts" 
+        name="Spare Parts"
+        parent="equipment_maintenance.equipment_menu_equipment_maintenance" 
+        action="action_equipment_spare_parts"
+        sequence="2"/>
+
+    
+
+    
+    <!-- Configuration Menu -->
+        <menuitem id="configuration_team_menu_equipment_maintenance" 
+            name="Configuration"
+            parent="root_menu_equipment_maintenance"/>
+        
+        <menuitem id="menu_team_equipment_maintenance"
+            name="Maintenance Teams"
+            action="action_maintenance_team"
+            parent="configuration_team_menu_equipment_maintenance"
+            sequence="10"/>
+
+        <menuitem id="menu_checklist_equipment_maintenance"
+            name="Maintenance Checklist"
+            action="action_maintenance_checklist"
+            parent="configuration_team_menu_equipment_maintenance"
+            sequence="20"/>
+
+        <menuitem id="menu_category_equipment_maintenance"
+            name="Equipment Categories"
+            action="maintenance.hr_equipment_category_action"
+            parent="configuration_team_menu_equipment_maintenance"
+            sequence="30"/>
+
+
+
+</odoo>
+
+
+
+
+  <!--  <menuitem id="sample_analysis_request_menu"
+        parent="zm_labax.sample_analysis_request_menu_lims"
+        action="action_labax_sample_analysis_request"/>
+
+    <menuitem id="sample_order_menu"
+        parent="zm_labax.sample_analysis_request_menu_lims"
+        action="action_labax_sample_order"/> -->
+
+    <!-- Test Menu -->
+
+<!-- 
+    <menuitem id="test_menu_lims" 
+        name="Test"
+        parent="zm_labax.parent_menu_lims" 
+        action="action_labax_product" 
+        sequence="20"/> -->
+
+
+    <!-- Test Report Menu -->
+    <!-- <menuitem id="test_report_menu_lims" 
+        name="Test Report"
+        parent="zm_labax.parent_menu_lims"
+        action="action_labax_test_report"
+        sequence="30"/> -->
+
+
+    <!-- Configuration Menu -->
+    <!-- <menuitem id="configuration_menu_lims" 
+        name="Configuration"
+        parent="zm_labax.parent_menu_lims" 
+        sequence="40"/> -->
+
+    <!-- Test Configuration -->
+    <!-- <menuitem id="configuration_test_menu_lims" 
+        name="Test Configuration"
+        parent="zm_labax.configuration_menu_lims"
+        sequence="30">
+    
+        <menuitem id="menu_lims_test_accreditation"
+            action="zm_labax_customization.action_product_accreditation"
+            sequence="10"/>
+
+        <menuitem id="menu_lims_test_Parameters"
+            action="zm_labax_customization.action_product_test_parameters"
+            sequence="20"/>
+
+
+        <menuitem id="menu_lims_test_method"
+            action="zm_labax_customization.action_product_test_method"
+            sequence="40"/>
+
+        <menuitem id="menu_lims_test_category"
+            action="zm_labax_customization.action_product_test_category"
+            sequence="50"/>
+    </menuitem> -->
+
+    <!-- Sample Configuration -->
+    <!-- <menuitem id="configuration_sample_menu_lims" 
+        name="Sample Configuration"
+        parent="zm_labax.configuration_menu_lims"
+        sequence="40">
+    
+        <menuitem id="menu_lims_sample_reason_for_collection"
+            action="action_sample_reason_for_collection"
+            sequence="20"/>
+
+        <menuitem id="menu_lims_sample_sampling_method"
+            action="action_sample_sampling_method"
+            sequence="10"/>
+
+        <menuitem id="menu_lims_sample_technique"
+            action="action_sample_technique"
+            sequence="10"/>
+
+        <menuitem id="menu_lims_sample_type"
+            action="action_sample_type"
+            sequence="10"/>
+
+        <menuitem id="menu_lims_sample_container"
+            action="action_sample_container"
+            sequence="10"/>
+            
+        <menuitem id="menu_lims_sample_neutralizing_agent"
+            action="action_sample_neutralizing_agent"
+            sequence="10"/>
+
+        <menuitem id="menu_lims_sample_transportation"
+            action="action_sample_transportation"
+            sequence="10"/>
+ 
+        <menuitem id="menu_lims_test_sample_matrix"
+            action="zm_labax_customization.action_product_test_sample_matrix"
+            sequence="10"/>
+
+        <menuitem id="menu_lims_sample_c_m_l"
+            action="action_sample_c_m_l"
+            sequence="10"/>
+
+        <menuitem id="menu_lims_sample_department"
+            action="action_sample_department"
+            sequence="10"/>
+    </menuitem>
+ -->
+
+    
+
+

@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+
+    <!-- Form View -->
+    <record id="view_maintenance_schedule_form" model="ir.ui.view">
+        <field name="name">view.maintenance.schedule.form</field>
+        <field name="model">maintenance.schedule</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Schedule Form">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,canceled"/>
+                    <button name="button_confirm" data-hotkey="c" string="Confirm"
+                     type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+
+                    <button name="button_cancel" data-hotkey="c" string="Cancel"
+                     type="object"  attrs="{'invisible': [('state', '==', 'canceled')]}"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="name" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="machine_id" />
+                            <field name="category_id" />
+                            <field name="technician_user_id" />
+                            <field name="maintenance_expected_date" />
+                            <field name="active" />
+                        </group>
+                        <group>
+                            <field name="model"/>   
+                            <field name="serial_no"/>   
+                            <field name="warranty_date"/>   
+                            <field name="cost" />
+                            <field name="company_id" />
+                        </group>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+
+    <!-- Tree View -->
+    <record id="view_maintenance_schedule_tree" model="ir.ui.view">
+        <field name="name">view.maintenance.schedule.tree</field>
+        <field name="model">maintenance.schedule</field>
+        <field name="arch" type="xml">
+            <tree string="Maintenance Schedule">
+                <field name="machine_id" />
+                <field name="category_id" />
+                <field name="technician_user_id" />
+                <field name="maintenance_expected_date" />
+                <field name="serial_no" />
+                <field name="cost" />                    
+                <field name="warranty_date" />                    
+            </tree>
+        </field>
+    </record>
+
+
+    <!-- Search View -->
+    <record id="view_maintenance_schedule_filter" model="ir.ui.view">
+        <field name="name">view.maintenance.schedule.filter</field>
+        <field name="model">maintenance.schedule</field>
+        <field name="arch" type="xml">
+            <search string="Maintenance Schedule">
+              <field name="name" string="Name"/>
+              <field name="description"/>
+            </search>
+        </field>
+    </record>
+
+
+    <!-- Action  -->
+    <record id="action_maintenance_schedule" model="ir.actions.act_window">
+        <field name="name">Maintenance Schedule</field>
+        <field name="res_model">maintenance.schedule</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_maintenance_schedule_tree"/>
+        <field name="search_view_id" ref="view_maintenance_schedule_filter"/>
+        <field name="context">{}</field>
+        <field name="domain">[]</field>            
+    </record>
+  
+
+</odoo>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <!-- Form View -->
+    <record id="view_maintenance_team_form" model="ir.ui.view">
+        <field name="name">Maintenance Teams</field>
+        <field name="model">maintenance.team</field>
+        <field name="arch" type="xml">
+            <form string="Maintenance Teams" class="o_sale_order">
+                <header>
+                    <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,canceled"/>
+                    <button name="button_confirm" data-hotkey="c" string="Confirm"
+                     type="object" class="oe_highlight" attrs="{'invisible': [('state', '!=', 'draft')]}"/>
+
+                    <button name="button_cancel" data-hotkey="c" string="Cancel"
+                     type="object"  attrs="{'invisible': [('state', '==', 'canceled')]}"/>
+                </header>
+                <sheet>
+                    <group name="team_header">
+                        <group name="team_details">
+                            <field name="name" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+
+                            <field name="member_ids"
+                                widget="many2many_tags"
+                                attrs="{'readonly': [('state', '!=', 'draft')]}"
+                                placeholder="Type to find a member..."/>
+                            <field name="color"/>
+                        </group>
+
+                        <group name="order_details">
+                            <field name="team_count" widget="integer"/>
+                            <field name="team_limit" widget="integer" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                            <field name="active" widget="boolean_toggle" attrs="{'readonly': [('state', '!=', 'draft')]}"/>
+                        </group>
+
+                    </group>
+                </sheet>
+
+                <field name="company_id" invisible="1"/>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <!-- Tree View -->
+    <record id="view_maintenance_team_tree" model="ir.ui.view">
+        <field name="name">view.maintenance.team.tree</field>
+        <field name="model">maintenance.team</field>
+        <field name="mode">primary</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <tree class="o_sale_order"
+                    string="Maintenance Team"
+                    sample="1"
+                    decoration-muted="state == 'cancel'">
+                <field name="name" string="Team Name" optional="show"/>
+                <field name="state" string="Status" widget="badge" decoration-info="state == 'draft'" decoration-success="state == 'confirmed'"   decoration-danger="state == 'canceled'"/>
+                <field name="member_ids" widget="many2many_tags" optional="show"/>
+                <!-- <field name="team_count" optional="show"/> -->
+                <!-- <field name="team_limit"/> -->
+                <field name="company_id"/>
+                <field name="active" string="Active" widget="boolean_toggle" optional="show"/>
+            </tree> 
+        </field>
+    </record>
+
+    
+    <!-- Search View -->
+    <record id="view_maintenance_team_filter" model="ir.ui.view">
+        <field name="name">view.maintenance.team.filter</field>
+        <field name="model">maintenance.team</field>
+        <field name="arch" type="xml">
+            <search string="Maintenance Team">
+              <field name="name"/>
+              <field name="state"/>
+            </search>
+        </field>
+    </record>
+    
+
+    <!-- Action -->
+    <record id="action_maintenance_team" model="ir.actions.act_window">
+        <field name="name">Maintenance Teams</field>
+        <field name="res_model">maintenance.team</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_maintenance_team_tree"/>
+        <field name="search_view_id" ref="view_maintenance_team_filter"/>
+        <field name="domain">[]</field>
+        <field name="help" type="html">
+            <p>
+                This view allows you to manage your Teams for Equipments Maintenance.
+            </p>
+        </field>
+    </record>
+    
+</odoo>

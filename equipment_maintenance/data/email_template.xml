@@ -1,0 +1,30 @@
+<odoo>
+    <data noupdate="1">
+        <record id="maintenance_schedule_reminder_template" model="mail.template">
+            <field name="name">Maintenance Schedule Reminder</field>
+            <field name="model_id" ref="model_maintenance_schedule"/>
+            <field name="subject">Reminder: Maintenance Schedule</field>
+            <field name="body_html">
+                <![CDATA[
+                    <p>Dear ${object.technician_user_id.name},</p>
+                    <p>This is a reminder that the maintenance for machine ${object.machine_id.name} is scheduled for <strong>${object.maintenance_expected_date}</strong>.</p>
+                    <p>Please ensure all necessary preparations are made for the scheduled maintenance.</p>
+                ]]>
+            </field>
+            <field name="email_from">${(user.email or user.login) | safe}</field>
+            <field name="email_to">${object.technician_user_id.email}</field>
+        </record>
+
+        <!-- cron job -->
+        <record id="ir_cron_send_maintenance_reminder" model="ir.cron">
+            <field name="name">Send Maintenance Reminder</field>
+            <field name="model_id" ref="model_maintenance_schedule"/>
+            <field name="state">code</field>
+            <field name="code">model.send_maintenance_reminder()</field>
+            <field name="interval_number">1</field>
+            <field name="interval_type">days</field>
+            <field name="active" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

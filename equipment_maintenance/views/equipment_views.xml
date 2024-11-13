@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+ 
+
+    <!-- Action -->
+    <record id="action_equipment_maintenance_equipment" model="ir.actions.act_window">
+        <field name="name">Equipments</field>
+        <field name="res_model">maintenance.equipment</field>
+        <field name="view_mode">kanban,form,tree</field>
+        <field name="view_id" ref="maintenance.hr_equipment_view_kanban"/>
+        <field name="help" type="html">
+            <p>
+                This view allows you to manage your Equipments.
+            </p>
+        </field>
+    </record>
+
+
+</odoo>
